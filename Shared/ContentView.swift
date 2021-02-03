@@ -57,177 +57,157 @@ struct ContentView: View {
                     y: height * 1.0
                 )
                 
-                let point1 = CGPoint(
+                let topRight = CGPoint(
                     x: width * 0.75,
                     y: height * 0.0
                 )
                 
-                let point2 = CGPoint(
+                let topMiddleRight = CGPoint(
                     x: width * 0.75,
                     y: height * 0.25
                 )
                 
-                let point3 = CGPoint(
+                let topMiddle = CGPoint(
                     x: width * 0.5,
                     y: height * 0.25
                 )
                 
-                let point4 = CGPoint(
-                    x: width * 0.75,
-                    y: height * 0.0
-                )
-
-                let point11 = CGPoint(
+                let topLeft = CGPoint(
                     x: width * 0.25,
                     y: height * 0.0
                 )
                 
-                let point12 = CGPoint(
+                let topMiddleLeft = CGPoint(
                     x: width * 0.25,
                     y: height * 0.25
                 )
                 
-                let point14 = CGPoint(
-                    x: width * 0.25,
-                    y: height * 0.0
-                )
-
-                let point21 = CGPoint(
+                let bottomLeft = CGPoint(
                     x: width * 0.25,
                     y: height * 1.0
                 )
                 
-                let point22 = CGPoint(
+                let bottomMiddleLeft = CGPoint(
                     x: width * 0.25,
                     y: height * 0.75
                 )
                 
-                let point23 = CGPoint(
+                let bottomMiddle = CGPoint(
                     x: width * 0.5,
                     y: height * 0.75
                 )
                 
-                let point24 = CGPoint(
-                    x: width * 0.25,
-                    y: height * 1.0
-                )
-                
-                let point31 = CGPoint(
+                let bottomRight = CGPoint(
                     x: width * 0.75,
                     y: height * 1.0
                 )
                 
-                let point32 = CGPoint(
+                let bottomMiddleRight = CGPoint(
                     x: width * 0.75,
                     y: height * 0.75
                 )
                 
-                let point34 = CGPoint(
-                    x: width * 0.75,
-                    y: height * 1.0
-                )
-
                 path.move(to: top)
                 path.addLine(to: bottom)
                 
                 if drawing.contains(.line1) {
                     path.move(to: top)
-                    path.addLine(to: point1)
+                    path.addLine(to: topRight)
                 }
                 
                 if drawing.contains(.line2) {
-                    path.move(to: point2)
-                    path.addLine(to: point3)
+                    path.move(to: topMiddleRight)
+                    path.addLine(to: topMiddle)
                 }
                 
                 if drawing.contains(.line3) {
                     path.move(to: top)
-                    path.addLine(to: point2)
+                    path.addLine(to: topMiddleRight)
                 }
                 
                 if drawing.contains(.line4) {
-                    path.move(to: point3)
-                    path.addLine(to: point4)
+                    path.move(to: topMiddle)
+                    path.addLine(to: topRight)
                 }
                 
                 if drawing.contains(.line5) {
-                    path.move(to: point1)
-                    path.addLine(to: point2)
+                    path.move(to: topRight)
+                    path.addLine(to: topMiddleRight)
                 }
                 
                 if drawing.contains(.line11) {
                     path.move(to: top)
-                    path.addLine(to: point11)
+                    path.addLine(to: topLeft)
                 }
                 
                 if drawing.contains(.line12) {
-                    path.move(to: point12)
-                    path.addLine(to: point3)
+                    path.move(to: topMiddleLeft)
+                    path.addLine(to: topMiddle)
                 }
                 
                 if drawing.contains(.line13) {
                     path.move(to: top)
-                    path.addLine(to: point12)
+                    path.addLine(to: topMiddleLeft)
                 }
                 
                 if drawing.contains(.line14) {
-                    path.move(to: point3)
-                    path.addLine(to: point14)
+                    path.move(to: topMiddle)
+                    path.addLine(to: topLeft)
                 }
                 
                 if drawing.contains(.line15) {
-                    path.move(to: point11)
-                    path.addLine(to: point12)
+                    path.move(to: topLeft)
+                    path.addLine(to: topMiddleLeft)
                 }
                 
                 if drawing.contains(.line21) {
                     path.move(to: bottom)
-                    path.addLine(to: point21)
+                    path.addLine(to: bottomLeft)
                 }
                 
                 if drawing.contains(.line22) {
-                    path.move(to: point22)
-                    path.addLine(to: point23)
+                    path.move(to: bottomMiddleLeft)
+                    path.addLine(to: bottomMiddle)
                 }
                 
                 if drawing.contains(.line23) {
                     path.move(to: bottom)
-                    path.addLine(to: point22)
+                    path.addLine(to: bottomMiddleLeft)
                 }
                 
                 if drawing.contains(.line24) {
-                    path.move(to: point23)
-                    path.addLine(to: point24)
+                    path.move(to: bottomMiddle)
+                    path.addLine(to: bottomLeft)
                 }
                 
                 if drawing.contains(.line25) {
-                    path.move(to: point21)
-                    path.addLine(to: point22)
+                    path.move(to: bottomLeft)
+                    path.addLine(to: bottomMiddleLeft)
                 }
                 
                 if drawing.contains(.line31) {
                     path.move(to: bottom)
-                    path.addLine(to: point31)
+                    path.addLine(to: bottomRight)
                 }
                 
                 if drawing.contains(.line32) {
-                    path.move(to: point32)
-                    path.addLine(to: point23)
+                    path.move(to: bottomMiddleRight)
+                    path.addLine(to: bottomMiddle)
                 }
                 
                 if drawing.contains(.line33) {
                     path.move(to: bottom)
-                    path.addLine(to: point32)
+                    path.addLine(to: bottomMiddleRight)
                 }
                 
                 if drawing.contains(.line34) {
-                    path.move(to: point23)
-                    path.addLine(to: point34)
+                    path.move(to: bottomMiddle)
+                    path.addLine(to: bottomRight)
                 }
                 
                 if drawing.contains(.line35) {
-                    path.move(to: point31)
-                    path.addLine(to: point32)
+                    path.move(to: bottomRight)
+                    path.addLine(to: bottomMiddleRight)
                 }
             }
             .stroke(Color.green, style: StrokeStyle(lineWidth: 4.0, lineCap: .round))
