@@ -14,7 +14,7 @@ struct CistercianDrawing: OptionSet {
     static let topMiddleRightH = CistercianDrawing(rawValue: 1 << 1)
     static let topRightDiagDown = CistercianDrawing(rawValue: 1 << 2)
     static let topRightDiagUp = CistercianDrawing(rawValue: 1 << 3)
-    static let topMiddleRightV = CistercianDrawing(rawValue: 1 << 4)
+    static let topRightV = CistercianDrawing(rawValue: 1 << 4)
     static let topLeftH = CistercianDrawing(rawValue: 1 << 5)
     static let topMiddleLeftH = CistercianDrawing(rawValue: 1 << 6)
     static let topLeftDiagDown = CistercianDrawing(rawValue: 1 << 7)
@@ -32,18 +32,73 @@ struct CistercianDrawing: OptionSet {
     static let bottomRightV = CistercianDrawing(rawValue: 1 << 19)
 }
 
-struct ContentView: View {
-    var number = 9
+func convertValue(value: Int) -> CistercianDrawing {
+    let data: [(Int, CistercianDrawing)] = [
+        (9000, [.bottomLeftV, .bottomMiddleLeftH, .bottomLeftH]),
+        (8000, [.bottomLeftV, .bottomMiddleLeftH]),
+        (7000, [.bottomLeftV, .bottomLeftH]),
+        (6000, [.bottomLeftV]),
+        (5000, [.bottomLeftDiagUp, .bottomLeftH]),
+        (4000, [.bottomLeftDiagUp]),
+        (3000, [.bottomLeftDiagDown]),
+        (2000, [.bottomMiddleLeftH]),
+        (1000, [.bottomLeftH]),
+        (900, [.bottomRightV, .bottomMiddleRightH, .bottomRightH]),
+        (800, [.bottomRightV, .bottomMiddleRightH]),
+        (700, [.bottomRightV, .bottomRightH]),
+        (600, [.bottomRightV]),
+        (500, [.bottomRightDiagUp, .bottomRightH]),
+        (400, [.bottomRightDiagUp]),
+        (300, [.bottomRightDiagDown]),
+        (200, [.bottomMiddleRightH]),
+        (100, [.bottomRightH]),
+        (90, [.topLeftV, .topMiddleLeftH, .topLeftH]),
+        (80, [.topLeftV, .topMiddleLeftH]),
+        (70, [.topLeftV, .topLeftH]),
+        (60, [.topLeftV]),
+        (50, [.topLeftDiagUp, .topLeftH]),
+        (40, [.topLeftDiagUp]),
+        (30, [.topLeftDiagDown]),
+        (20, [.topMiddleLeftH]),
+        (10, [.topLeftH]),
+        (9, [.topRightV, .topMiddleRightH, .topRightH]),
+        (8, [.topRightV, .topMiddleRightH]),
+        (7, [.topRightV, .topRightH]),
+        (6, [.topRightV]),
+        (5, [.topRightDiagUp, .topRightH]),
+        (4, [.topRightDiagUp]),
+        (3, [.topRightDiagDown]),
+        (2, [.topMiddleRightH]),
+        (1, [.topRightH])
+    ]
     
+    var convertableValue = value
+    
+    var result = CistercianDrawing()
+    
+    for (number, lines) in data {
+        let sum = convertableValue / number
+        if sum > 0 {
+            result.insert(lines)
+            convertableValue = convertableValue - number
+        }
+    }
+    
+    return result
+}
+
+struct ContentView: View {
 //    var drawing: CistercianDrawing = [
 //        .topRightDiagDown, .topLeftH, .topLeftV,
 //        .topMiddleLeftH, .bottomLeftH, .bottomRightH,
 //        .bottomRightV, .bottomMiddleRightH] // 1993
     
-    var drawing: CistercianDrawing = [
-        .topRightDiagDown, .topLeftDiagDown,
-        .bottomRightDiagDown,
-        .bottomLeftV, .bottomLeftH, .bottomMiddleLeftH] // 9433
+//    var drawing: CistercianDrawing = [
+//        .topRightDiagDown, .topLeftDiagDown,
+//        .bottomRightDiagDown,
+//        .bottomLeftV, .bottomLeftH, .bottomMiddleLeftH] // 9433
+    
+    var drawing = convertValue(value: 9433)
     
     var body: some View {
         GeometryReader { geometry in
@@ -135,7 +190,7 @@ struct ContentView: View {
                     path.addLine(to: topRight)
                 }
                 
-                if drawing.contains(.topMiddleRightV) {
+                if drawing.contains(.topRightV) {
                     path.move(to: topRight)
                     path.addLine(to: topMiddleRight)
                 }
