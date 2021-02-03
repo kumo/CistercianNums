@@ -7,54 +7,38 @@
 
 import SwiftUI
 
-struct CistercianDrawing {
-    var line1: Bool
-    var line2: Bool
-    var line3: Bool
-    var line4: Bool
-    var line5: Bool
-    var line11: Bool
-    var line12: Bool
-    var line13: Bool
-    var line14: Bool
-    var line15: Bool
-    var line21: Bool
-    var line22: Bool
-    var line23: Bool
-    var line24: Bool
-    var line25: Bool
-    var line31: Bool
-    var line32: Bool
-    var line33: Bool
-    var line34: Bool
-    var line35: Bool
+struct CistercianDrawing: OptionSet {
+    let rawValue: Int
+    
+    static let line1 = CistercianDrawing(rawValue: 1 << 0)
+    static let line2 = CistercianDrawing(rawValue: 1 << 1)
+    static let line3 = CistercianDrawing(rawValue: 1 << 2)
+    static let line4 = CistercianDrawing(rawValue: 1 << 3)
+    static let line5 = CistercianDrawing(rawValue: 1 << 4)
+    static let line11 = CistercianDrawing(rawValue: 1 << 5)
+    static let line12 = CistercianDrawing(rawValue: 1 << 6)
+    static let line13 = CistercianDrawing(rawValue: 1 << 7)
+    static let line14 = CistercianDrawing(rawValue: 1 << 8)
+    static let line15 = CistercianDrawing(rawValue: 1 << 9)
+    static let line21 = CistercianDrawing(rawValue: 1 << 10)
+    static let line22 = CistercianDrawing(rawValue: 1 << 11)
+    static let line23 = CistercianDrawing(rawValue: 1 << 12)
+    static let line24 = CistercianDrawing(rawValue: 1 << 13)
+    static let line25 = CistercianDrawing(rawValue: 1 << 14)
+    static let line31 = CistercianDrawing(rawValue: 1 << 15)
+    static let line32 = CistercianDrawing(rawValue: 1 << 16)
+    static let line33 = CistercianDrawing(rawValue: 1 << 17)
+    static let line34 = CistercianDrawing(rawValue: 1 << 18)
+    static let line35 = CistercianDrawing(rawValue: 1 << 19)
 }
 
 struct ContentView: View {
     var number = 9
     
-    var drawing = CistercianDrawing(
-        line1: true,
-        line2: true,
-        line3: true,
-        line4: true,
-        line5: true,
-        line11: true,
-        line12: true,
-        line13: true,
-        line14: true,
-        line15: true,
-        line21: true,
-        line22: true,
-        line23: true,
-        line24: true,
-        line25: true,
-        line31: true,
-        line32: true,
-        line33: true,
-        line34: true,
-        line35: true
-    )
+    var drawing: CistercianDrawing = [
+        .line3, .line11, .line15,
+        .line12, .line21, .line31,
+        .line35, .line32]
     
     var body: some View {
         GeometryReader { geometry in
@@ -146,102 +130,102 @@ struct ContentView: View {
                 path.move(to: top)
                 path.addLine(to: bottom)
                 
-                if drawing.line1 == true {
+                if drawing.contains(.line1) {
                     path.move(to: top)
                     path.addLine(to: point1)
                 }
                 
-                if drawing.line2 == true {
+                if drawing.contains(.line2) {
                     path.move(to: point2)
                     path.addLine(to: point3)
                 }
                 
-                if drawing.line3 == true {
+                if drawing.contains(.line3) {
                     path.move(to: top)
                     path.addLine(to: point2)
                 }
                 
-                if drawing.line4 == true {
+                if drawing.contains(.line4) {
                     path.move(to: point3)
                     path.addLine(to: point4)
                 }
                 
-                if drawing.line5 == true {
+                if drawing.contains(.line5) {
                     path.move(to: point1)
                     path.addLine(to: point2)
                 }
                 
-                if drawing.line11 == true {
+                if drawing.contains(.line11) {
                     path.move(to: top)
                     path.addLine(to: point11)
                 }
                 
-                if drawing.line12 == true {
+                if drawing.contains(.line12) {
                     path.move(to: point12)
                     path.addLine(to: point3)
                 }
                 
-                if drawing.line13 == true {
+                if drawing.contains(.line13) {
                     path.move(to: top)
                     path.addLine(to: point12)
                 }
                 
-                if drawing.line14 == true {
+                if drawing.contains(.line14) {
                     path.move(to: point3)
                     path.addLine(to: point14)
                 }
                 
-                if drawing.line15 == true {
+                if drawing.contains(.line15) {
                     path.move(to: point11)
                     path.addLine(to: point12)
                 }
                 
-                if drawing.line21 == true {
+                if drawing.contains(.line21) {
                     path.move(to: bottom)
                     path.addLine(to: point21)
                 }
                 
-                if drawing.line22 == true {
+                if drawing.contains(.line22) {
                     path.move(to: point22)
                     path.addLine(to: point23)
                 }
                 
-                if drawing.line23 == true {
+                if drawing.contains(.line23) {
                     path.move(to: bottom)
                     path.addLine(to: point22)
                 }
                 
-                if drawing.line24 == true {
+                if drawing.contains(.line24) {
                     path.move(to: point23)
                     path.addLine(to: point24)
                 }
                 
-                if drawing.line25 == true {
+                if drawing.contains(.line25) {
                     path.move(to: point21)
                     path.addLine(to: point22)
                 }
                 
-                if drawing.line31 == true {
+                if drawing.contains(.line31) {
                     path.move(to: bottom)
                     path.addLine(to: point31)
                 }
                 
-                if drawing.line32 == true {
+                if drawing.contains(.line32) {
                     path.move(to: point32)
                     path.addLine(to: point23)
                 }
                 
-                if drawing.line33 == true {
+                if drawing.contains(.line33) {
                     path.move(to: bottom)
                     path.addLine(to: point32)
                 }
                 
-                if drawing.line34 == true {
+                if drawing.contains(.line34) {
                     path.move(to: point23)
                     path.addLine(to: point34)
                 }
                 
-                if drawing.line35 == true {
+                if drawing.contains(.line35) {
                     path.move(to: point31)
                     path.addLine(to: point32)
                 }
