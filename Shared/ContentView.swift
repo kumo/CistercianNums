@@ -10,35 +10,40 @@ import SwiftUI
 struct CistercianDrawing: OptionSet {
     let rawValue: Int
     
-    static let line1 = CistercianDrawing(rawValue: 1 << 0)
-    static let line2 = CistercianDrawing(rawValue: 1 << 1)
-    static let line3 = CistercianDrawing(rawValue: 1 << 2)
-    static let line4 = CistercianDrawing(rawValue: 1 << 3)
-    static let line5 = CistercianDrawing(rawValue: 1 << 4)
-    static let line11 = CistercianDrawing(rawValue: 1 << 5)
-    static let line12 = CistercianDrawing(rawValue: 1 << 6)
-    static let line13 = CistercianDrawing(rawValue: 1 << 7)
-    static let line14 = CistercianDrawing(rawValue: 1 << 8)
-    static let line15 = CistercianDrawing(rawValue: 1 << 9)
-    static let line21 = CistercianDrawing(rawValue: 1 << 10)
-    static let line22 = CistercianDrawing(rawValue: 1 << 11)
-    static let line23 = CistercianDrawing(rawValue: 1 << 12)
-    static let line24 = CistercianDrawing(rawValue: 1 << 13)
-    static let line25 = CistercianDrawing(rawValue: 1 << 14)
-    static let line31 = CistercianDrawing(rawValue: 1 << 15)
-    static let line32 = CistercianDrawing(rawValue: 1 << 16)
-    static let line33 = CistercianDrawing(rawValue: 1 << 17)
-    static let line34 = CistercianDrawing(rawValue: 1 << 18)
-    static let line35 = CistercianDrawing(rawValue: 1 << 19)
+    static let topRightH = CistercianDrawing(rawValue: 1 << 0)
+    static let topMiddleRightH = CistercianDrawing(rawValue: 1 << 1)
+    static let topRightDiagDown = CistercianDrawing(rawValue: 1 << 2)
+    static let topRightDiagUp = CistercianDrawing(rawValue: 1 << 3)
+    static let topMiddleRightV = CistercianDrawing(rawValue: 1 << 4)
+    static let topLeftH = CistercianDrawing(rawValue: 1 << 5)
+    static let topMiddleLeftH = CistercianDrawing(rawValue: 1 << 6)
+    static let topLeftDiagDown = CistercianDrawing(rawValue: 1 << 7)
+    static let topLeftDiagUp = CistercianDrawing(rawValue: 1 << 8)
+    static let topLeftV = CistercianDrawing(rawValue: 1 << 9)
+    static let bottomLeftH = CistercianDrawing(rawValue: 1 << 10)
+    static let bottomMiddleLeftH = CistercianDrawing(rawValue: 1 << 11)
+    static let bottomLeftDiagUp = CistercianDrawing(rawValue: 1 << 12)
+    static let bottomLeftDiagDown = CistercianDrawing(rawValue: 1 << 13)
+    static let bottomLeftV = CistercianDrawing(rawValue: 1 << 14)
+    static let bottomRightH = CistercianDrawing(rawValue: 1 << 15)
+    static let bottomMiddleRightH = CistercianDrawing(rawValue: 1 << 16)
+    static let bottomRightDiagUp = CistercianDrawing(rawValue: 1 << 17)
+    static let bottomRightDiagDown = CistercianDrawing(rawValue: 1 << 18)
+    static let bottomRightV = CistercianDrawing(rawValue: 1 << 19)
 }
 
 struct ContentView: View {
     var number = 9
     
+//    var drawing: CistercianDrawing = [
+//        .topRightDiagDown, .topLeftH, .topLeftV,
+//        .topMiddleLeftH, .bottomLeftH, .bottomRightH,
+//        .bottomRightV, .bottomMiddleRightH] // 1993
+    
     var drawing: CistercianDrawing = [
-        .line3, .line11, .line15,
-        .line12, .line21, .line31,
-        .line35, .line32]
+        .topRightDiagDown, .topLeftDiagDown,
+        .bottomRightDiagDown,
+        .bottomLeftV, .bottomLeftH, .bottomMiddleLeftH] // 9433
     
     var body: some View {
         GeometryReader { geometry in
@@ -110,102 +115,102 @@ struct ContentView: View {
                 path.move(to: top)
                 path.addLine(to: bottom)
                 
-                if drawing.contains(.line1) {
+                if drawing.contains(.topRightH) {
                     path.move(to: top)
                     path.addLine(to: topRight)
                 }
                 
-                if drawing.contains(.line2) {
+                if drawing.contains(.topMiddleRightH) {
                     path.move(to: topMiddleRight)
                     path.addLine(to: topMiddle)
                 }
                 
-                if drawing.contains(.line3) {
+                if drawing.contains(.topRightDiagDown) {
                     path.move(to: top)
                     path.addLine(to: topMiddleRight)
                 }
                 
-                if drawing.contains(.line4) {
+                if drawing.contains(.topRightDiagUp) {
                     path.move(to: topMiddle)
                     path.addLine(to: topRight)
                 }
                 
-                if drawing.contains(.line5) {
+                if drawing.contains(.topMiddleRightV) {
                     path.move(to: topRight)
                     path.addLine(to: topMiddleRight)
                 }
                 
-                if drawing.contains(.line11) {
+                if drawing.contains(.topLeftH) {
                     path.move(to: top)
                     path.addLine(to: topLeft)
                 }
                 
-                if drawing.contains(.line12) {
+                if drawing.contains(.topMiddleLeftH) {
                     path.move(to: topMiddleLeft)
                     path.addLine(to: topMiddle)
                 }
                 
-                if drawing.contains(.line13) {
+                if drawing.contains(.topLeftDiagDown) {
                     path.move(to: top)
                     path.addLine(to: topMiddleLeft)
                 }
                 
-                if drawing.contains(.line14) {
+                if drawing.contains(.topLeftDiagUp) {
                     path.move(to: topMiddle)
                     path.addLine(to: topLeft)
                 }
                 
-                if drawing.contains(.line15) {
+                if drawing.contains(.topLeftV) {
                     path.move(to: topLeft)
                     path.addLine(to: topMiddleLeft)
                 }
                 
-                if drawing.contains(.line21) {
+                if drawing.contains(.bottomLeftH) {
                     path.move(to: bottom)
                     path.addLine(to: bottomLeft)
                 }
                 
-                if drawing.contains(.line22) {
+                if drawing.contains(.bottomMiddleLeftH) {
                     path.move(to: bottomMiddleLeft)
                     path.addLine(to: bottomMiddle)
                 }
                 
-                if drawing.contains(.line23) {
+                if drawing.contains(.bottomLeftDiagUp) {
                     path.move(to: bottom)
                     path.addLine(to: bottomMiddleLeft)
                 }
                 
-                if drawing.contains(.line24) {
+                if drawing.contains(.bottomLeftDiagDown) {
                     path.move(to: bottomMiddle)
                     path.addLine(to: bottomLeft)
                 }
                 
-                if drawing.contains(.line25) {
+                if drawing.contains(.bottomLeftV) {
                     path.move(to: bottomLeft)
                     path.addLine(to: bottomMiddleLeft)
                 }
                 
-                if drawing.contains(.line31) {
+                if drawing.contains(.bottomRightH) {
                     path.move(to: bottom)
                     path.addLine(to: bottomRight)
                 }
                 
-                if drawing.contains(.line32) {
+                if drawing.contains(.bottomMiddleRightH) {
                     path.move(to: bottomMiddleRight)
                     path.addLine(to: bottomMiddle)
                 }
                 
-                if drawing.contains(.line33) {
+                if drawing.contains(.bottomRightDiagUp) {
                     path.move(to: bottom)
                     path.addLine(to: bottomMiddleRight)
                 }
                 
-                if drawing.contains(.line34) {
+                if drawing.contains(.bottomRightDiagDown) {
                     path.move(to: bottomMiddle)
                     path.addLine(to: bottomRight)
                 }
                 
-                if drawing.contains(.line35) {
+                if drawing.contains(.bottomRightV) {
                     path.move(to: bottomRight)
                     path.addLine(to: bottomMiddleRight)
                 }
