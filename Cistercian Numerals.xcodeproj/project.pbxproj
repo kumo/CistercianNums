@@ -35,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BF981AC525CBDA34007F600C /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = MyPlayground.playground; path = Playgrounds/MyPlayground.playground; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		BFB3715325CB35110082F5B1 /* Cistercian_NumeralsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cistercian_NumeralsApp.swift; sourceTree = "<group>"; };
 		BFB3715425CB35110082F5B1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BFB3715525CB35130082F5B1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -98,6 +99,7 @@
 		BFB3715225CB35110082F5B1 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				BF981AC525CBDA34007F600C /* MyPlayground.playground */,
 				BFB3715325CB35110082F5B1 /* Cistercian_NumeralsApp.swift */,
 				BFB3715425CB35110082F5B1 /* ContentView.swift */,
 				BFB3715525CB35130082F5B1 /* Assets.xcassets */,

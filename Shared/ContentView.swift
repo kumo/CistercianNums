@@ -20,16 +20,16 @@ struct CistercianDrawing: OptionSet {
     static let topLeftDiagDown = CistercianDrawing(rawValue: 1 << 7)
     static let topLeftDiagUp = CistercianDrawing(rawValue: 1 << 8)
     static let topLeftV = CistercianDrawing(rawValue: 1 << 9)
-    static let bottomLeftH = CistercianDrawing(rawValue: 1 << 10)
-    static let bottomMiddleLeftH = CistercianDrawing(rawValue: 1 << 11)
-    static let bottomLeftDiagUp = CistercianDrawing(rawValue: 1 << 12)
-    static let bottomLeftDiagDown = CistercianDrawing(rawValue: 1 << 13)
-    static let bottomLeftV = CistercianDrawing(rawValue: 1 << 14)
-    static let bottomRightH = CistercianDrawing(rawValue: 1 << 15)
-    static let bottomMiddleRightH = CistercianDrawing(rawValue: 1 << 16)
-    static let bottomRightDiagUp = CistercianDrawing(rawValue: 1 << 17)
-    static let bottomRightDiagDown = CistercianDrawing(rawValue: 1 << 18)
-    static let bottomRightV = CistercianDrawing(rawValue: 1 << 19)
+    static let bottomRightH = CistercianDrawing(rawValue: 1 << 10)
+    static let bottomMiddleRightH = CistercianDrawing(rawValue: 1 << 11)
+    static let bottomRightDiagUp = CistercianDrawing(rawValue: 1 << 12)
+    static let bottomRightDiagDown = CistercianDrawing(rawValue: 1 << 13)
+    static let bottomRightV = CistercianDrawing(rawValue: 1 << 14)
+    static let bottomLeftH = CistercianDrawing(rawValue: 1 << 15)
+    static let bottomMiddleLeftH = CistercianDrawing(rawValue: 1 << 16)
+    static let bottomLeftDiagUp = CistercianDrawing(rawValue: 1 << 17)
+    static let bottomMiddleLeftDiagDown = CistercianDrawing(rawValue: 1 << 18)
+    static let bottomLeftV = CistercianDrawing(rawValue: 1 << 19)
 }
 
 func convertValue(value: Int) -> CistercianDrawing {
@@ -40,7 +40,7 @@ func convertValue(value: Int) -> CistercianDrawing {
         (6000, [.bottomLeftV]),
         (5000, [.bottomLeftDiagUp, .bottomLeftH]),
         (4000, [.bottomLeftDiagUp]),
-        (3000, [.bottomLeftDiagDown]),
+        (3000, [.bottomMiddleLeftDiagDown]),
         (2000, [.bottomMiddleLeftH]),
         (1000, [.bottomLeftH]),
         (900, [.bottomRightV, .bottomMiddleRightH, .bottomRightH]),
@@ -80,6 +80,36 @@ func convertValue(value: Int) -> CistercianDrawing {
         if number <= convertableValue {
             result.insert(lines)
             convertableValue = convertableValue - number
+        }
+    }
+    
+    return result
+}
+
+func convertValue2(value: Int) -> CistercianDrawing {
+    var conversionData: [(Int, CistercianDrawing)] = [
+        (9000, [.bottomLeftV, .bottomMiddleLeftH, .bottomLeftH]),
+        (8000, [.bottomLeftV, .bottomMiddleLeftH]),
+        (7000, [.bottomLeftV, .bottomLeftH]),
+        (6000, [.bottomLeftV]),
+        (5000, [.bottomMiddleLeftDiagDown, .bottomLeftH]),
+        (4000, [.bottomMiddleLeftDiagDown]),
+        (3000, [.bottomLeftDiagUp]),
+        (2000, [.bottomMiddleLeftH]),
+        (1000, [.bottomLeftH]),
+    ]
+
+    var convertMe = value
+    var result = CistercianDrawing()
+
+    for _ in 0...3 {
+        for (index, data) in conversionData.enumerated() {
+            if data.0 <= convertMe {
+                result.insert(data.1)
+                convertMe = convertMe - data.0
+            }
+            
+            conversionData[index] = (data.0 / 10, CistercianDrawing(rawValue: data.1.rawValue >> 5))
         }
     }
     
@@ -234,7 +264,7 @@ struct ContentView: View {
                     path.addLine(to: bottomMiddleLeft)
                 }
                 
-                if drawing.contains(.bottomLeftDiagDown) {
+                if drawing.contains(.bottomMiddleLeftDiagDown) {
                     path.move(to: bottomMiddle)
                     path.addLine(to: bottomLeft)
                 }
