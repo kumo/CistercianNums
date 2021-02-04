@@ -77,8 +77,7 @@ func convertValue(value: Int) -> CistercianDrawing {
     var result = CistercianDrawing()
     
     for (number, lines) in data {
-        let sum = convertableValue / number
-        if sum > 0 {
+        if number <= convertableValue {
             result.insert(lines)
             convertableValue = convertableValue - number
         }
