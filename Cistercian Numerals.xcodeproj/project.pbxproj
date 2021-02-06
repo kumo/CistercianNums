@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF69F48E25CF021C007052E4 /* Converters.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF69F48D25CF021C007052E4 /* Converters.swift */; };
+		BF69F48F25CF021C007052E4 /* Converters.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF69F48D25CF021C007052E4 /* Converters.swift */; };
 		BFB3716F25CB35130082F5B1 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB3716E25CB35130082F5B1 /* Tests_iOS.swift */; };
 		BFB3717A25CB35130082F5B1 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB3717925CB35130082F5B1 /* Tests_macOS.swift */; };
 		BFB3717C25CB35130082F5B1 /* Cistercian_NumeralsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB3715325CB35110082F5B1 /* Cistercian_NumeralsApp.swift */; };
@@ -35,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BF69F48D25CF021C007052E4 /* Converters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Converters.swift; sourceTree = "<group>"; };
 		BF981AC525CBDA34007F600C /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = MyPlayground.playground; path = Playgrounds/MyPlayground.playground; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		BFB3715325CB35110082F5B1 /* Cistercian_NumeralsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cistercian_NumeralsApp.swift; sourceTree = "<group>"; };
 		BFB3715425CB35110082F5B1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -102,6 +105,7 @@
 				BF981AC525CBDA34007F600C /* MyPlayground.playground */,
 				BFB3715325CB35110082F5B1 /* Cistercian_NumeralsApp.swift */,
 				BFB3715425CB35110082F5B1 /* ContentView.swift */,
+				BF69F48D25CF021C007052E4 /* Converters.swift */,
 				BFB3715525CB35130082F5B1 /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -311,6 +315,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFB3717E25CB35130082F5B1 /* ContentView.swift in Sources */,
+				BF69F48E25CF021C007052E4 /* Converters.swift in Sources */,
 				BFB3717C25CB35130082F5B1 /* Cistercian_NumeralsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -320,6 +325,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFB3717F25CB35130082F5B1 /* ContentView.swift in Sources */,
+				BF69F48F25CF021C007052E4 /* Converters.swift in Sources */,
 				BFB3717D25CB35130082F5B1 /* Cistercian_NumeralsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
