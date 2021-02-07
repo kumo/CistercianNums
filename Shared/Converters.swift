@@ -62,7 +62,15 @@ func convertValue(value: Int) -> CistercianDrawing {
     return result
 }
 
-func convertValue2(value: Int) -> CistercianDrawing {
+func convertValue2(value: String) -> CistercianDrawing? {
+    guard var convertMe = Int(value) else {
+        return nil
+    }
+    
+    guard convertMe > 0 && convertMe < 10_000 else {
+        return nil
+    }
+    
     var conversionData: [(Int, CistercianDrawing)] = [
         (9000, [.bottomLeftV, .bottomMiddleLeftH, .bottomLeftH]),
         (8000, [.bottomLeftV, .bottomMiddleLeftH]),
@@ -75,7 +83,6 @@ func convertValue2(value: Int) -> CistercianDrawing {
         (1000, [.bottomLeftH]),
     ]
 
-    var convertMe = value
     var result = CistercianDrawing()
 
     for _ in 0...3 {

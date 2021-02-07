@@ -32,9 +32,20 @@ struct CistercianDrawing: OptionSet {
     static let bottomLeftV = CistercianDrawing(rawValue: 1 << 19)
 }
 
+class CistercianNumeralData: ObservableObject {
+    @Published var drawing: CistercianDrawing = CistercianDrawing()
+    @Published var input = "0" {
+        didSet {
+            if let convertedValue = convertValue2(value: input) {
+                drawing = convertedValue
+            }
+        }
+    }
+}
+
 struct CistercianNumeralView: View {
     
-    var drawing: CistercianDrawing
+    var drawing: CistercianDrawing = CistercianDrawing()
     
     var body: some View {
         GeometryReader { geometry in
@@ -223,27 +234,22 @@ struct ContentView: View {
     //        .bottomRightDiagDown,
     //        .bottomLeftV, .bottomLeftH, .bottomMiddleLeftH] // 9433
     
-    @State var drawing = convertValue(value: 1)
-    @State var input = 0
-    
+    @StateObject var data = CistercianNumeralData()
+
     var body: some View {
         VStack {
-            CistercianNumeralView(drawing: drawing)
+            CistercianNumeralView(drawing: data.drawing)
             
-            Button(action: {
-                input = input + 1
-                self.drawing = convertValue2(value: input)
-            }) {
-                HStack {
-                    Image(systemName: "plus")
-                    Text("Increment")
-                }
-                .padding(10.0)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10.0)
-                    .stroke(lineWidth: 2.0)
-                )
-            }
+            Divider()
+            
+            HStack {
+                Spacer()
+                Text(data.input)
+            }.padding([.leading, .trailing])
+            
+            Divider()
+            
+            KeyPad(string: $data.input)
         }
     }
 }
