@@ -31,12 +31,32 @@ class Tests_iOS: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
-        }
+//    func testLaunchPerformance() throws {
+//        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
+//            // This measures how long it takes to launch your application.
+//            measure(metrics: [XCTApplicationLaunchMetric()]) {
+//                XCUIApplication().launch()
+//            }
+//        }
+//    }
+    
+    func testConversions() throws {
+        let conversion1 = convertValue2(value: "1993")
+        
+        let expected1: CistercianDrawing = [
+            .topRightDiagDown, .topLeftH, .topLeftV,
+            .topMiddleLeftH, .bottomLeftH, .bottomRightH,
+            .bottomRightV, .bottomMiddleRightH] // 1993
+        
+        assert(conversion1 == expected1)
+        
+        let conversion2 = convertValue2(value: "9433")
+        
+        let expected2: CistercianDrawing = [
+            .topRightDiagDown, .topLeftDiagDown,
+            .bottomRightDiagDown,
+            .bottomLeftV, .bottomLeftH, .bottomMiddleLeftH] // 9433
+        
+        assert(conversion2 == expected2)
     }
 }

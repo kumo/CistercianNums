@@ -7,31 +7,6 @@
 
 import SwiftUI
 
-struct CistercianDrawing: OptionSet {
-    let rawValue: Int
-    
-    static let topRightH = CistercianDrawing(rawValue: 1 << 0)
-    static let topMiddleRightH = CistercianDrawing(rawValue: 1 << 1)
-    static let topRightDiagDown = CistercianDrawing(rawValue: 1 << 2)
-    static let topRightDiagUp = CistercianDrawing(rawValue: 1 << 3)
-    static let topRightV = CistercianDrawing(rawValue: 1 << 4)
-    static let topLeftH = CistercianDrawing(rawValue: 1 << 5)
-    static let topMiddleLeftH = CistercianDrawing(rawValue: 1 << 6)
-    static let topLeftDiagDown = CistercianDrawing(rawValue: 1 << 7)
-    static let topLeftDiagUp = CistercianDrawing(rawValue: 1 << 8)
-    static let topLeftV = CistercianDrawing(rawValue: 1 << 9)
-    static let bottomRightH = CistercianDrawing(rawValue: 1 << 10)
-    static let bottomMiddleRightH = CistercianDrawing(rawValue: 1 << 11)
-    static let bottomRightDiagUp = CistercianDrawing(rawValue: 1 << 12)
-    static let bottomRightDiagDown = CistercianDrawing(rawValue: 1 << 13)
-    static let bottomRightV = CistercianDrawing(rawValue: 1 << 14)
-    static let bottomLeftH = CistercianDrawing(rawValue: 1 << 15)
-    static let bottomMiddleLeftH = CistercianDrawing(rawValue: 1 << 16)
-    static let bottomLeftDiagUp = CistercianDrawing(rawValue: 1 << 17)
-    static let bottomMiddleLeftDiagDown = CistercianDrawing(rawValue: 1 << 18)
-    static let bottomLeftV = CistercianDrawing(rawValue: 1 << 19)
-}
-
 class CistercianNumeralData: ObservableObject {
     @Published var drawing: CistercianDrawing = CistercianDrawing()
     @Published var input = "0" {
@@ -224,15 +199,6 @@ struct CistercianNumeralView: View {
     }}
 
 struct ContentView: View {
-    //    var drawing: CistercianDrawing = [
-    //        .topRightDiagDown, .topLeftH, .topLeftV,
-    //        .topMiddleLeftH, .bottomLeftH, .bottomRightH,
-    //        .bottomRightV, .bottomMiddleRightH] // 1993
-    
-    //    var drawing: CistercianDrawing = [
-    //        .topRightDiagDown, .topLeftDiagDown,
-    //        .bottomRightDiagDown,
-    //        .bottomLeftV, .bottomLeftH, .bottomMiddleLeftH] // 9433
     
     @StateObject var data = CistercianNumeralData()
 
