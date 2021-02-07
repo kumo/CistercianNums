@@ -33,13 +33,11 @@ struct KeyPad: View {
     
     private func keyWasPressed(_ key: String) {
         switch key {
-        case "." where string.contains("."): break
-        case "." where string == "0": string += key
         case "⌫":
             string.removeLast()
             if string.isEmpty { string = "0" }
         case _ where string == "0": string = key
-        default: string += key
+        default: if string.count < 4 { string += key }
         }
     }
 }
