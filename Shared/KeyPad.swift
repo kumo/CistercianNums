@@ -42,3 +42,11 @@ struct KeyPad: View {
     }
 }
 
+struct KeyPad_Previews : PreviewProvider {
+    @State static var string = "1234"
+    static var previews: some View {
+        Group {
+            KeyPad(string: $string)
+        }
+    }
+}
