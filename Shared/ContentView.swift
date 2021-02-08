@@ -211,6 +211,7 @@ struct ContentView: View {
             HStack {
                 Spacer()
                 Text(data.input)
+                    .font(.largeTitle)
             }.padding([.leading, .trailing])
             
             Divider()
