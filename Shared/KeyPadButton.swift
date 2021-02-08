@@ -9,23 +9,23 @@ import SwiftUI
 
 struct KeyPadButton: View {
     var key: String
-
+    
     var body: some View {
         Button(action: { self.action(self.key) }) {
             Color.clear
                 .overlay(RoundedRectangle(cornerRadius: 12)
-                    .stroke(Color.accentColor))
+                            .stroke(Color.accentColor))
                 .overlay(Text(key)
-                    .font(.largeTitle))
+                            .font(.largeTitle))
         }
         .background(Color.green)
         .cornerRadius(5)
     }
-
+    
     enum ActionKey: EnvironmentKey {
         static var defaultValue: (String) -> Void { { _ in } }
     }
-
+    
     @Environment(\.keyPadButtonAction) var action: (String) -> Void
 }
 

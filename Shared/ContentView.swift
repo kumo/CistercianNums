@@ -196,12 +196,13 @@ struct CistercianNumeralView: View {
         }
         .aspectRatio(1, contentMode: .fit)
         
-    }}
+    }
+}
 
 struct ContentView: View {
     
     @StateObject var data = CistercianNumeralData()
-
+    
     var body: some View {
         VStack {
             CistercianNumeralView(drawing: data.drawing)
