@@ -11,7 +11,7 @@ struct KeyPadRow: View {
     var keys: [String]
     
     var body: some View {
-        HStack {
+        HStack(spacing: 0) {
             ForEach(keys, id: \.self) { key in
                 KeyPadButton(key: key)
             }
@@ -23,12 +23,13 @@ struct KeyPad: View {
     @Binding var string: String
     
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             KeyPadRow(keys: ["1", "2", "3"])
             KeyPadRow(keys: ["4", "5", "6"])
             KeyPadRow(keys: ["7", "8", "9"])
             KeyPadRow(keys: ["", "0", "⌫"])
         }.environment(\.keyPadButtonAction, self.keyWasPressed(_:))
+        .background(Color.red)
     }
     
     private func keyWasPressed(_ key: String) {

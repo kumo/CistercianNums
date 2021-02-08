@@ -15,8 +15,11 @@ struct KeyPadButton: View {
             Color.clear
                 .overlay(RoundedRectangle(cornerRadius: 12)
                     .stroke(Color.accentColor))
-                .overlay(Text(key))
+                .overlay(Text(key)
+                    .font(.largeTitle))
         }
+        .background(Color.green)
+        .cornerRadius(5)
     }
 
     enum ActionKey: EnvironmentKey {
