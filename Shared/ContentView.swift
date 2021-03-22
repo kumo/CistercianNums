@@ -195,6 +195,7 @@ struct CistercianNumeralView: View {
             .stroke(Color.green, style: StrokeStyle(lineWidth: 4.0, lineCap: .round))
         }
         .aspectRatio(1, contentMode: .fit)
+        .padding()
         
     }
 }
@@ -204,20 +205,32 @@ struct ContentView: View {
     @StateObject var data = CistercianNumeralData()
     
     var body: some View {
-        VStack {
-            CistercianNumeralView(drawing: data.drawing)
+        GeometryReader { geometry in
             
-            Divider()
-            
-            HStack {
+            VStack {
+                CistercianNumeralView(drawing: data.drawing)
+                    .frame(height: geometry.size.height * 0.45)
+                
                 Spacer()
-                Text(data.input)
-                    .font(.largeTitle)
-            }.padding([.leading, .trailing])
-            
-            Divider()
-            
-            KeyPad(string: $data.input)
+                
+                VStack {
+                    Divider()
+                    
+                    HStack {
+                        Spacer()
+                        Text(data.input)
+                            .font(.largeTitle)
+                    }.padding([.leading, .trailing])
+                    
+                    Divider()
+                }
+                .frame(height: geometry.size.height * 0.15)
+                
+                Spacer()
+                
+                KeyPad(string: $data.input)
+                    .frame(width: geometry.size.width, height: geometry.size.height * 0.35)
+            }
         }
     }
 }

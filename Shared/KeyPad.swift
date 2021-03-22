@@ -11,7 +11,7 @@ struct KeyPadRow: View {
     var keys: [String]
     
     var body: some View {
-        HStack(spacing: 0) {
+        HStack(spacing: 5) {
             ForEach(keys, id: \.self) { key in
                 KeyPadButton(key: key)
             }
@@ -23,7 +23,7 @@ struct KeyPad: View {
     @Binding var string: String
     
     var body: some View {
-        VStack(spacing: 0) {
+        VStack(spacing: 5) {
             KeyPadRow(keys: ["1", "2", "3"])
             KeyPadRow(keys: ["4", "5", "6"])
             KeyPadRow(keys: ["7", "8", "9"])

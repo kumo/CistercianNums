@@ -11,15 +11,16 @@ struct KeyPadButton: View {
     var key: String
     
     var body: some View {
-        Button(action: { self.action(self.key) }) {
-            Color.clear
-                .overlay(RoundedRectangle(cornerRadius: 12)
-                            .stroke(Color.accentColor))
-                .overlay(Text(key)
-                            .font(.largeTitle))
+        GeometryReader { geometry in
+            Button(action: { self.action(self.key) }) {
+                Text(key)
+                    .font(.largeTitle)
+                    .frame(width: geometry.size.width, height: geometry.size.height)
+                    .background(Color.yellow)
+            }
+            .buttonStyle(PlainButtonStyle())
+            .cornerRadius(10)
         }
-        .background(Color.green)
-        .cornerRadius(5)
     }
     
     enum ActionKey: EnvironmentKey {
@@ -40,7 +41,7 @@ struct KeyPadButton_Previews: PreviewProvider {
     static var previews: some View {
         KeyPadButton(key: "8")
             .padding()
-            .frame(width: 80, height: 80)
+            .frame(width: 100, height: 100)
             .previewLayout(.sizeThatFits)
     }
 }
