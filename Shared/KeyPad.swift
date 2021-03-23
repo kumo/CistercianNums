@@ -29,7 +29,8 @@ struct KeyPad: View {
             KeyPadRow(keys: ["7", "8", "9"])
             KeyPadRow(keys: ["", "0", "⌫"])
         }.environment(\.keyPadButtonAction, self.keyWasPressed(_:))
-        .background(Color.red)
+        .background(Color.clear)
+        .padding(5)
     }
     
     private func keyWasPressed(_ key: String) {

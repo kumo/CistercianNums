@@ -16,7 +16,8 @@ struct KeyPadButton: View {
                 Text(key)
                     .font(.largeTitle)
                     .frame(width: geometry.size.width, height: geometry.size.height)
-                    .background(Color.yellow)
+                    .background(Color.gray)
+                    .foregroundColor(Color.white)
             }
             .buttonStyle(PlainButtonStyle())
             .cornerRadius(10)

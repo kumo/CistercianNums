@@ -192,7 +192,7 @@ struct CistercianNumeralView: View {
                     path.addLine(to: bottomMiddleRight)
                 }
             }
-            .stroke(Color.green, style: StrokeStyle(lineWidth: 4.0, lineCap: .round))
+            .stroke(Color.purple, style: StrokeStyle(lineWidth: 4.0, lineCap: .round))
         }
         .aspectRatio(1, contentMode: .fit)
         .padding()
