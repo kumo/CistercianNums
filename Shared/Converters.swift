@@ -92,7 +92,7 @@ func convertValue2(value: String) -> CistercianDrawing? {
     }
     
     guard convertMe > 0 && convertMe < 10_000 else {
-        return nil
+        return CistercianDrawing()
     }
     
     var conversionData: [(Int, CistercianDrawing)] = [
