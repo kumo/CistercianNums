@@ -34,6 +34,10 @@ struct KeyPad: View {
     }
     
     private func keyWasPressed(_ key: String) {
+        guard !key.isEmpty else {
+            return
+        }
+        
         switch key {
         case "⌫":
             string.removeLast()
